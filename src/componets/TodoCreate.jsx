@@ -2,11 +2,16 @@ import { useState } from "react";
 
 const TodoCreate = ({createTodo}) => {
     const [title, setTitle] = useState("");
-    const handleSubmitAddTodo = (e) => {
-        e.preventDefault();
-        console.log(title)
 
-        setTitle("");
+        const handleSubmitAddTodo = (e) => 
+            {
+                e.preventDefault();
+                console.log(title)
+
+                if (title.trim().length > 0){
+                    createTodo(title);
+                    return setTitle("");
+            }
     }
     return (
         <div className=" container mx-auto px-5 pt-8">

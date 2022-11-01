@@ -3,16 +3,17 @@ import { useState } from "react";
 const TodoCreate = ({createTodo}) => {
     const [title, setTitle] = useState("");
 
-        const handleSubmitAddTodo = (e) => 
-            {
-                e.preventDefault();
-                console.log(title)
+    const handleSubmitAddTodo = (e) => 
+        {
+            e.preventDefault();
+            console.log(title)
 
-                if (title.trim().length > 0){
-                    createTodo(title);
-                    return setTitle("");
+            if (title.trim().length > 0)
+            {
+                createTodo(title);
+                return setTitle("");
             }
-    }
+        }
     return (
         <div className=" container mx-auto px-5 pt-8">
             <form onSubmit={handleSubmitAddTodo} className=" bg-white rounded-md overflow-hidden py-5 px-5 flex gap-6 items-center mt-12">

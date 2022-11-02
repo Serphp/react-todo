@@ -1,7 +1,7 @@
 const Selector = ({ FilSelector, filter }) => {
     return (
-      <section className="container mx-auto px-4 text-bold">
-          <div className="px-5 py-5 bg-white mt-6 rounded-md">
+      <section className="mx-auto px-4">
+          <div className="dark:bg-gray-800 transition-all duration-500 px-5 py-5 bg-white mt-6 rounded-md ">
             <span className=" flex justify-center gap-4 ">
               <button 
               className={` text-gray-500 ${filter === "all" && "hover:text-blue-600"}`}

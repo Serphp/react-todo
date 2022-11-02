@@ -7,7 +7,7 @@ const ListItem = ({todo, rmTodo, updateTodo}) => {
         const { id, title, completed } = todo;
         return (
         <div className=" rounded-md bg-white [&>article]:text-gray-400:text-bold"> 
-        <article className=" flex gap-4 border-b border-b-gray-200 py-5 px-5">
+        <article className=" flex gap-4 border-b border-b-gray-200 py-5 px-5 dark:bg-gray-800">
                 {/*<button className=" flex-none inline-block h-5 w-5 rounded-full border-4">
                 <IconStatus />
                 </button>*/}

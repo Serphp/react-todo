@@ -4,7 +4,7 @@ const Selector = ({ FilSelector, filter }) => {
           <div className="px-5 py-5 bg-white mt-6 rounded-md">
             <span className=" flex justify-center gap-4 ">
               <button 
-              className={` text-gray-500 ${filter === "all" && "text-blue-800"}`}
+              className={` text-gray-500 ${filter === "all" && "hover:text-blue-600"}`}
               onClick={() => FilSelector("all")}>
                 All
               </button>

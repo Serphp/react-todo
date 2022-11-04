@@ -1,17 +1,17 @@
 import Header from "./componets/Header";
 import Form from "./componets/TodoCreate";
 import Selector from "./componets/selector";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import List from "./componets/List";
 import CountList from "./componets/CountList";
 
-const initialStateList = [
+ {/* const initialStateList = [
   { id: 1, title: "Darle comida a Saikou", completed: true },
   { id: 2, title: "Mimar a la princesa Minnie", completed: false },
   { id: 3, title: "Dar comida al novio de minnie", completed: false },
   { id: 4, title: "Gato cowboy", completed: false },
-]
-
+] */ }
+const initialStateList = JSON.parse(localStorage.getItem("todos")) || [];
 const App = () => {
 
   const [todos, setTodos] = useState(initialStateList);
@@ -46,6 +46,10 @@ const updateTodo = (id) => {
     setTodos(todos.filter((todo) => todo.id !== id));
     //setTodos(setTodos);
   }
+
+  useEffect(() => {
+    localStorage.setItem("todos", JSON.stringify(todos));
+  }, [todos])
 
   {/* Filtra Todo */}
   const count = todos.filter((todo) => !todo.completed).length;
@@ -90,7 +94,6 @@ const updateTodo = (id) => {
 
 
           </main>
-
           
           <footer className="text-center mt-12 text-gray-500">
             Drag and drop to reorder list

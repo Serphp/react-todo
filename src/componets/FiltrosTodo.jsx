@@ -1,4 +1,4 @@
-const Selector = ({ FilSelector, filter }) => {
+const FiltrosTodo = ({ FilSelector, filter }) => {
     return (
       <section>
           <div className="dark:bg-gray-800 transition-all duration-500 px-5 py-5 bg-white mt-6 rounded-md ">
@@ -26,4 +26,4 @@ const Selector = ({ FilSelector, filter }) => {
     );
 };
 
-export default Selector;
+export default FiltrosTodo;

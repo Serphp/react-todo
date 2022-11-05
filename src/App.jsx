@@ -1,27 +1,14 @@
 import Header from "./componets/Header";
 import Form from "./componets/TodoCreate";
-import Selector from "./componets/selector";
+import FiltrosTodo from "./componets/FiltrosTodo";
 import { useEffect, useState } from "react";
 import List from "./componets/List";
 import CountList from "./componets/CountList";
 import { DragDropContext, Droppable, Draggable } from "@hello-pangea/dnd";
 
- {/* STATICO TEST
- const initialStateList = [
-  { id: 1, title: "Darle comida a Saikou", completed: true },
-  { id: 2, title: "Mimar a la princesa Minnie", completed: false },
-  { id: 3, title: "Dar comida al novio de minnie", completed: false },
-  { id: 4, title: "Gato cowboy", completed: false },
-] */ }
+ {/* 2022 */ }
 
 const initialStateList = JSON.parse(localStorage.getItem("todos")) || [];
-
- {/* const order = (list, starIndex, endIndex) => {
-  const resultado = [...list];
-  const [removed] = resultado.splice(starIndex, 1);
-  resultado.splice(endIndex,0 , removed)
-  return resultado;
-} */}
 
 const order = (lista, startIndex, endIndex) => {
   const resultado = [...lista];
@@ -130,7 +117,7 @@ const handleDragEnd = (resultado) => {
             </DragDropContext>
 
 
-            <Selector FilSelector={FilSelector}/>
+            <FiltrosTodo FilSelector={FilSelector}/>
           </main>
           
           <footer className="text-center mt-12 text-gray-500">

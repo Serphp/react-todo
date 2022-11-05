@@ -4,14 +4,33 @@ import Selector from "./componets/selector";
 import { useEffect, useState } from "react";
 import List from "./componets/List";
 import CountList from "./componets/CountList";
+import { DragDropContext, Droppable, Draggable } from "@hello-pangea/dnd";
 
- {/* const initialStateList = [
+ {/* STATICO TEST
+ const initialStateList = [
   { id: 1, title: "Darle comida a Saikou", completed: true },
   { id: 2, title: "Mimar a la princesa Minnie", completed: false },
   { id: 3, title: "Dar comida al novio de minnie", completed: false },
   { id: 4, title: "Gato cowboy", completed: false },
 ] */ }
+
 const initialStateList = JSON.parse(localStorage.getItem("todos")) || [];
+
+ {/* const order = (list, starIndex, endIndex) => {
+  const resultado = [...list];
+  const [removed] = resultado.splice(starIndex, 1);
+  resultado.splice(endIndex,0 , removed)
+  return resultado;
+} */}
+
+const order = (lista, startIndex, endIndex) => {
+  const resultado = [...lista];
+  const [del] = resultado.splice(startIndex, 1);
+  resultado.splice(endIndex, 0, del);
+
+  return resultado;
+};
+
 const App = () => {
 
   const [todos, setTodos] = useState(initialStateList);
@@ -76,6 +95,24 @@ const updateTodo = (id) => {
     }
   };
 
+
+{/* */}
+{/* */}
+
+const handleDragEnd = (resultado) => {
+    const { destination, source } = resultado;
+    if (!destination) return;
+    if (
+      source.index === destination.index && 
+      source.droppableId === destination.droppableId
+    )
+    return;
+
+    setTodos((prevTodo) => 
+      order(prevTodo, source.index, destination.index)
+    );
+  };
+
   return (    
       <div className=" min-h-screen bg-gray-100 bg-[url(.\assets\images\bg-mobile-light.jpg)] bg-contain bg-no-repeat dark:bg-gray-900">
         
@@ -84,15 +121,16 @@ const updateTodo = (id) => {
           <main className="container mx-auto px-5 mt-8 ">
 
 
+            <DragDropContext onDragEnd={handleDragEnd}> 
             <List todos={FilterTodo()} 
             rmTodo={rmTodo} 
             updateTodo={updateTodo} />
 
             <CountList count={count} ClearList={ClearList}/>
-            
+            </DragDropContext>
+
+
             <Selector FilSelector={FilSelector}/>
-
-
           </main>
           
           <footer className="text-center mt-12 text-gray-500">

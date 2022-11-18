@@ -21,7 +21,7 @@ const TodoCreate = ({createTodo}) => {
             <span className=" inline-block h-5 w-5 rounded-full border-2"></span>
             <input 
             type="text" 
-            placeholder="Write..." 
+            placeholder="What needs to be done?" 
             className="dark:bg-gray-800 transition-all duration-500 w-full text-gray-600 outline-none"
             value={title}
             onChange={(e) => setTitle(e.target.value)}
